@@ -12,8 +12,10 @@ body{
 }
 
 .error{
-    color: crimson;
+    color: red;
     font-size: 14px;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 button{
