@@ -10,9 +10,9 @@
 
 <script>
 
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import useSignOut from "../composible/useSignOut"
-import { auth } from '@/firebase/config';
+// import { auth } from '@/firebase/config';
 import getUser from '@/composible/getUser';
 
 export default {
@@ -24,8 +24,6 @@ export default {
         }
 
         let {user} = getUser();
-
-        // this function will invoke when user is login or log out
         
         return {
             logout,
