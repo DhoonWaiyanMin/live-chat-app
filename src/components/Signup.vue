@@ -3,30 +3,29 @@
   <form @submit.prevent="handleSignUp">
     <input type="text" placeholder="display name" v-model="displayName"/>
     <input type="email" placeholder="email" v-model="email"/>
-    <p v-if="error" class="error">{{ error }}</p>
     <input type="password" placeholder="password" v-model="password"/>
+    <p v-if="error" class="error">{{ error }}</p>
     <button>Sign Up</button>
   </form>
 </template>
 
 <script>
 import { ref } from 'vue';
-import { auth } from '../firebase/config'
+import useSignup from '../composible/useSignup'
 export default {
-    setup(){
+    setup(props,context){
         let displayName = ref("");
         let email = ref("")
         let password = ref("")
-        let error = ref("")
 
-        let handleSignUp = async ()=>{
-            try{
-                let res = await auth.createUserWithEmailAndPassword(email.value,password.value)
-                if(!res){
-                    throw new Error("Couldn't create new user")
-                }
-            }catch(err){
-                error.value = err.message
+        let { error , createAccount } = useSignup();
+
+        let handleSignUp = async()=>{
+            let res = await createAccount(email.value , password.value , displayName.value)
+            if(res){
+              context.emit("enterChatRoom");
+            }else{
+              console.log(error.value)
             }
         }
 

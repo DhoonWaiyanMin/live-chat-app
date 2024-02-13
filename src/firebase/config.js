@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 let db = firebase.firestore();
-let timestamp = firebase.firestore.FieldValue.serverTimestamp;
+let timestamp = firebase.firestore.FieldValue.serverTimestamp
 let auth = firebase.auth();
 
 export { db , timestamp , auth }
