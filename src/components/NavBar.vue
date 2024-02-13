@@ -36,7 +36,7 @@ export default {
 <style>
 nav{
     padding: 10px 20px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
